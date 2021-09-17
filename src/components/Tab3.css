@@ -1,0 +1,20 @@
+
+    
+.titulo{
+    margin-top:1rem;
+    margin-left:11rem ;
+  
+  }
+  /* ion-icon {
+  color: blue;
+  } */
+
+   .centrada{
+    text-align: center;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    
+
+   }
