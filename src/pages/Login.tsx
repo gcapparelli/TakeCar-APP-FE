@@ -1,7 +1,7 @@
 import { IonLabel,IonPage,IonCheckbox,IonButton,IonHeader,IonToolbar,IonTitle,IonContent,IonGrid,IonRow,IonCol,IonItemDivider,IonList,IonInput,IonItem } from '@ionic/react';
 import React,{useState,useEffect,useContext} from 'react';
 import {Link} from 'react-router-dom'
-import ImagenFly from "../images/fly.jpg"
+import ImagenTakeCar from "../images/takecarlogo.jpg"
 import './Login.css';
 import {loginUser} from '../firebaseConfig';
 import { toast } from '../components/toast';
@@ -13,10 +13,10 @@ const Login: React.FC=()=>{
   const {user,agregarUser}= userIngresado;
 
   const [usuario, guardarUsuario]=useState({
-        legajo:'',
+        dni:'',
         password:''
     });
-  const {legajo,password}= usuario;
+  const {dni,password}= usuario;
 
   useEffect(()=>{
     agregarUser(usuario);
@@ -33,7 +33,7 @@ const Login: React.FC=()=>{
     }
   async function login(){
        
-      const res= await loginUser(legajo, password)
+      const res= await loginUser(dni, password)
       if (!res){
         toast('Credenciales incorrectas')
         
@@ -41,7 +41,7 @@ const Login: React.FC=()=>{
         toast('Ingresando...')
   
         window.location.href='/menu'
-        localStorage.setItem('vuel',JSON.stringify(usuario.legajo));
+        localStorage.setItem('vuel',JSON.stringify(usuario.dni));
        
       } 
          
@@ -56,18 +56,18 @@ const Login: React.FC=()=>{
         <IonHeader>
           <IonToolbar>
           <IonTitle className="tituloLogin"><b>Bienvenidos</b></IonTitle>
-            <img className="imagenHeader"src={ImagenFly}/>
+            <img className="imagenHeader"src={ImagenTakeCar}/>
            
           </IonToolbar>
         </IonHeader>
         <IonContent>
        
   <IonItem>
-    <IonLabel position="floating">Legajo</IonLabel>
+    <IonLabel position="floating">DNI</IonLabel>
     <IonInput 
-     name="legajo"
+     name="dni"
     
-     value={legajo}
+     value={dni}
      onIonChange={onChange} />
   </IonItem>
   <IonItem>
